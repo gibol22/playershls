@@ -19,13 +19,13 @@ $(document).ready(function(){
 
             player.configure({
                 drm: {
-                    servers: { // license servers
+                    servers: {
                         'com.widevine.alpha': window.atob(data.drm),
                     }
                 }
             });
 
-            player.load(window.atob(data.widevine)) // source
+            player.load(window.atob(data.widevine))
                 .then(function () {
 
                     var variantTracks = player.getVariantTracks();
@@ -43,10 +43,14 @@ $(document).ready(function(){
                     for (var i = groupAudios.length - 1; i <= variantTracks.length - 1; i += groupAudios.length) {
                         bitrates.push(variantTracks[i]);
                     }
-
+                    
                     new Plyr(video, {
                         controls: ["play-large", "pause-large", "play", "mute", "volume", "live", "settings", "pip", "fullscreen"],
                         settings: ['quality', 'speed', 'loop'],
+                        speed: {
+                                    selected: 1,
+                                    options: [0.5, 0.75, 1]
+                                },
                         quality: {
                             options: bitrates.map(j => j.height),
                             forced: true,
@@ -62,6 +66,7 @@ $(document).ready(function(){
                             }
                         }
                     });
+                    player.speed = 1;
                 });
         }
 
