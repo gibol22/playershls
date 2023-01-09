@@ -19,8 +19,8 @@ $(document).ready(function(){
 
             player.configure({
                 drm: {
-                    servers: {
-                        'com.widevine.alpha': window.atob(data.drm),
+                    clearKeys: {
+                        'window.atob(data.drm)': window.atob(data.drm),
                     }
                 }
             });
