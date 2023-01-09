@@ -20,7 +20,7 @@ $(document).ready(function(){
             player.configure({
                 drm: {
                     clearKeys: {
-                        'window.atob(data.drm)': window.atob(data.drm),
+                        '4c467a737445684c4974426f556c7579': '4547737a78565152376f4e3861636541',
                     }
                 }
             });
